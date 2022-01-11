@@ -1,6 +1,6 @@
 import { Command } from '../../struct/Command';
 
-export default class Ping extends Command {
+export default class ping extends Command {
 	constructor() {
 		super({
 			data: {
@@ -9,9 +9,8 @@ export default class Ping extends Command {
 				options: [],
 				type: 'CHAT_INPUT'
 			},
-
-			async run({ client, int }) {
-				int.reply(`${client.ws.ping} ms`);
+			run({ client, int }) {
+				int.reply('pong');
 			}
 		});
 	}

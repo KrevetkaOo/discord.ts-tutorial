@@ -1,5 +1,5 @@
+import { ExtendedClient } from './struct/cliente';
 import * as dotenv from 'dotenv';
-dotenv.config();
 
-import { ExtendedClient } from './struct/ExtendedClient';
+dotenv.config();
 new ExtendedClient().init();
