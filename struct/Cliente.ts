@@ -1,6 +1,7 @@
 import { Client, Collection } from 'discord.js';
 import { readdirSync } from 'fs';
 import config from '../config';
+import { connect } from 'mongoose';
 
 export class ExtendedClient extends Client {
   constructor() {
@@ -12,6 +13,10 @@ export class ExtendedClient extends Client {
         status: 'idle'
       }
     });
+
+    connect(process.env.MONGODB)
+      .then(() => console.info('conectado a mongodb'))
+      .catch(e => console.error(e));
   }
 
   commands: Collection<string, any> = new Collection();
