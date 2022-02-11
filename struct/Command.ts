@@ -9,7 +9,7 @@ export class Command {
       type: Discord.ApplicationCommandType;
       options: Discord.ApplicationCommandOption[];
     };
-    run: ({ client, int }: { client: ExtendedClient; int: Discord.CommandInteraction & { member: Discord.GuildMember } }) => any;
+    run: ({ client, int }: { client: ExtendedClient; int: Discord.CommandInteraction<'cached'> }) => any;
   }) {
     this.data = opciones.data;
     this.run = opciones.run;
@@ -21,5 +21,5 @@ export class Command {
     type: Discord.ApplicationCommandType;
     options: Discord.ApplicationCommandOption[];
   };
-  run: ({ client, int }: { client: ExtendedClient; int: Discord.CommandInteraction & { member: Discord.GuildMember } }) => any;
+  run: ({ client, int }: { client: ExtendedClient; int: Discord.CommandInteraction<'cached'> }) => any;
 }
