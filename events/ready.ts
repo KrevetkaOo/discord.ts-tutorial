@@ -8,5 +8,6 @@ export default class Ready extends Event {
 
   run() {
     console.log('bot listo');
+    this.client.music.init(this.client.user.id);
   }
 }

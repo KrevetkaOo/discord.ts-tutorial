@@ -2,6 +2,9 @@ import { Client, Collection } from 'discord.js';
 import { readdirSync } from 'fs';
 import config from '../config';
 import { connect } from 'mongoose';
+import { Manager } from '@drgatoxd/erelajs';
+import { LavasfyClient } from '@drgatoxd/lavasfy';
+import events from '../manager/events';
 
 export class ExtendedClient extends Client {
   constructor() {
@@ -21,10 +24,50 @@ export class ExtendedClient extends Client {
 
   commands: Collection<string, any> = new Collection();
 
+  music = new Manager({
+    nodes: [
+      {
+        host: 'lavalink.devz.cloud',
+        identifier: 'main',
+        password: 'mathiscool',
+        port: 443,
+        secure: true,
+        retryAmount: Infinity
+      }
+    ],
+    send: (id, payload) => {
+      const guild = this.guilds.cache.get(id);
+      if (guild) guild.shard.send(payload);
+    }
+  });
+
+  lavasfy = new LavasfyClient(
+    {
+      clientID: process.env.SPOTIFY_ID,
+      clientSecret: process.env.SPOTIFY_SECRET,
+      audioOnlyResults: true,
+      autoResolve: true,
+      useSpotifyMetadata: true,
+      playlistLoadLimit: 3
+    },
+    [
+      {
+        host: 'lavalink.devz.cloud',
+        id: 'main',
+        password: 'mathiscool',
+        port: 443,
+        secure: true
+      }
+    ]
+  );
+
   init() {
     this.login();
     this.loadcomandos();
     this.loadeventos();
+    this.lavasfy.requestToken();
+    this.on('raw', data => this.music.updateVoiceState(data));
+    events(this);
   }
 
   loadcomandos() {
