@@ -13,9 +13,10 @@
     "@drgatoxd/lavasfy": "^1.0.0",
     "@types/uuid": "^8.3.4",
     "aki-api": "^6.0.8",
-    "discord.js": "^13.5.1",
+    "discord.js": "github:monbrey/discord.js#modals",
     "dotenv": "^10.0.0",
     "mongoose": "^6.1.7",
+    "node-fetch": "^2.6.7",
     "ts-node": "^10.4.0",
     "uuid": "^8.3.2"
   }
