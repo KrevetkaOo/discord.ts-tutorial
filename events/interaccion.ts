@@ -1,3 +1,4 @@
+import { Interaction } from 'discord.js';
 import { ExtendedClient } from '../struct/cliente';
 import { Event } from '../struct/Event';
 
@@ -6,12 +7,34 @@ export default class Int extends Event {
     super(client, 'interactionCreate');
   }
 
-  run(int) {
+  run(int: Interaction<'cached'>) {
     if (int.isCommand() || int.isContextMenu()) {
       const nombre = int.commandName;
       const comando = this.client.commands.get(nombre);
 
       comando.run({ client: this.client, int });
+    }
+
+    if (int.isModalSubmit()) {
+      const channelName = int.fields.getTextInputValue('nombre-canal');
+      const channelDescription = int.fields.getTextInputValue('desc-canal');
+
+      return int.reply({
+        embeds: [
+          {
+            fields: [
+              {
+                name: 'nombre del canal',
+                value: channelName
+              },
+              {
+                name: 'descripcion del canal',
+                value: channelDescription || 'ninguna'
+              }
+            ]
+          }
+        ]
+      });
     }
   }
 }

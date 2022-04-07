@@ -5,6 +5,15 @@ export default model(
   new Schema<servidores>({
     _id: String,
 
+    counter: {
+      channel: { type: String, default: null },
+      enabled: { type: Boolean, default: false },
+      lastNumber: { type: Number, default: 0 },
+      lastUser: { type: String, default: null },
+      allowComments: { type: Boolean, default: false },
+      allowSpam: { type: Boolean, default: false }
+    },
+
     canales: {
       sugerencias: { type: String, default: null }
     },
@@ -27,6 +36,15 @@ export default model(
 
 interface servidores {
   _id: string;
+
+  counter: {
+    channel: string;
+    enabled: boolean;
+    lastNumber: number;
+    lastUser: string;
+    allowComments: boolean;
+    allowSpam: boolean;
+  };
 
   canales: {
     sugerencias: string;

@@ -1,7 +1,7 @@
 {
   "name": "bot2",
   "version": "1.0.0",
-  "description": "",
+  "description": "oaoaoa",
   "scripts": {
     "start": "npx ts-node ."
   },
