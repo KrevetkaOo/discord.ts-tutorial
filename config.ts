@@ -1,6 +1,6 @@
 export default {
   comandos: {
-    servidor: '912152924422037574',
+    servidor: '958829433249230899',
     testing: true
   }
 };

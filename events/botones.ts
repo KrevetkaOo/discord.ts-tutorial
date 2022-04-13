@@ -64,6 +64,7 @@ export default class Int extends Event {
 
       sugerencia.respuestas = sugerencia.respuestas.map(item => {
         if (item.id == int.user.id) return { ...item, type: action };
+        else return item;
       });
 
       // si se rechaza/acepta la sugerencia, el contador de votos positivos/negativos se reduce en 1
