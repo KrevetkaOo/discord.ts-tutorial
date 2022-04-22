@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "oaoaoa",
   "scripts": {
-    "start": "npx ts-node ."
+    "start": "npx ts-node --transpile-only ."
   },
   "keywords": [],
   "author": "",
