@@ -2,9 +2,8 @@ import { Client, Collection } from 'discord.js';
 import { readdirSync } from 'fs';
 import config from '../config';
 import { connect } from 'mongoose';
-import { Manager } from '@drgatoxd/erelajs';
-import { LavasfyClient } from '@drgatoxd/lavasfy';
 import events from '../manager/events';
+import { Twitch } from './Twitch';
 
 export class ExtendedClient extends Client {
   constructor() {
@@ -22,9 +21,12 @@ export class ExtendedClient extends Client {
       .catch(e => console.error(e));
   }
 
+  twitch = new Twitch(process.env.TWITCH_CLIENT_ID, process.env.TWITCH_CLIENT_SECRET);
   commands: Collection<string, any> = new Collection();
 
   init() {
+    // setInterval(() => this.twitch.getAuthKey(), 60 * 60 * 1000);
+    this.twitch.getAuthKey();
     this.login();
     this.loadcomandos();
     this.loadeventos();
