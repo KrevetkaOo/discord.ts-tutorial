@@ -41,4 +41,32 @@ export class Economia {
 
     return money[target];
   }
+
+  public static async deposit(userId: string, guildId: string, amount: number | 'all') {
+    const money = await Money.findOne({ userId, guildId });
+    if (!money) return false;
+    if (amount == 'all') amount = money.cash;
+
+    if (!money.cash || money.cash < amount) return false;
+
+    money.cash -= amount;
+    money.bank += amount;
+
+    await money.save();
+    return true;
+  }
+
+  public static async withdraw(userId: string, guildId: string, amount: number | 'all') {
+    const money = await Money.findOne({ userId, guildId });
+    if (!money) return false;
+    if (amount == 'all') amount = money.bank;
+
+    if (!money.bank || money.bank < amount) return false;
+
+    money.cash += amount;
+    money.bank -= amount;
+
+    await money.save();
+    return true;
+  }
 }

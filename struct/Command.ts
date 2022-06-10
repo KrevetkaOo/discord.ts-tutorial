@@ -7,7 +7,7 @@ export class Command {
       name: string;
       description: string;
       type: Discord.ApplicationCommandType;
-      options: Discord.ApplicationCommandOption[];
+      options: Discord.ApplicationCommandOptionData[];
     };
     run: ({ client, int }: { client: ExtendedClient; int: Discord.CommandInteraction<'cached'> }) => any;
   }) {
@@ -19,7 +19,7 @@ export class Command {
     name: string;
     description: string;
     type: Discord.ApplicationCommandType;
-    options: Discord.ApplicationCommandOption[];
+    options: Discord.ApplicationCommandOptionData[];
   };
   run: ({ client, int }: { client: ExtendedClient; int: Discord.CommandInteraction<'cached'> }) => any;
 }

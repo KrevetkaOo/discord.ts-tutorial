@@ -16,7 +16,7 @@
     "axios": "^0.27.2",
     "canvas": "^2.9.0",
     "discord-backup": "^3.0.1",
-    "discord.js": "github:monbrey/discord.js#modals",
+    "discord.js": "^13.8.0",
     "dotenv": "^10.0.0",
     "image-djs": "^2.1.0",
     "image-url-validator": "^1.0.4",
