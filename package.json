@@ -2,6 +2,7 @@
   "name": "bot2",
   "version": "1.0.0",
   "description": "oaoaoa",
+  "main": "./src/index.ts",
   "scripts": {
     "start": "npx ts-node --transpile-only ."
   },
