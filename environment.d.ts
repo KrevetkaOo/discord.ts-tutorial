@@ -3,8 +3,8 @@ declare global {
     interface ProcessEnv {
       readonly DISCORD_TOKEN: string;
       readonly MONGODB: string;
-      readonly TWITCH_SECRET: string;
-      readonly TWITCH_ID: string;
+      readonly TWITCH_CLIENT_ID: string;
+      readonly TWITCH_CLIENT_SECRET: string;
     }
   }
 }
